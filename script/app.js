@@ -93,6 +93,8 @@ $(window).ready(()=>{
 	var bCont = $('.container');
 	var bGreen = $('.container .green');
 
+	var scores = 0;
+
 	var isAlive = true;
 	//game loop
 	setInterval(()=>{
@@ -118,6 +120,8 @@ $(window).ready(()=>{
 		    
 		    if(player.checkCollision('.bottom, .top')){
 		    	isAlive = false;
+		    	$('.lose').show('fast').html("You have reached " + scores + " scores.<br/>"
+		    		+ "Your record is " + scoreRecord(scores) + " scores.");
 		    }
 		}
 
@@ -136,8 +140,12 @@ $(window).ready(()=>{
 	    	)
 			level.append(tube);
 			setTimeout(()=>{
-				if(isAlive) tube.remove();
-			}, (10000/SPEED)*2 );
+				if(isAlive){
+					tube.remove();
+					scores++;
+					updateScores();
+				}
+			}, (10000/SPEED) );
 		}
 	}, 10000/SPEED);
 
@@ -148,10 +156,31 @@ $(window).ready(()=>{
 	});
 
 	function RestartGame(){
-		isAlive = true;
 		$('.tube').remove();
-		player.setPosition(100, 250);
 		level.css('left', 0);
+		player.setPosition(100, 250);
+
+		scores = 0;
+		updateScores();
+		$('.lose').hide();
+		isAlive = true;
+	}
+	function updateScores(){
+		$('#score').html('Score: ' + scores);
+	}
+	//bestResults
+	function scoreRecord(count){
+		//if undefined
+		if( !(!!localStorage.getItem("FlappyRecord"))  ){
+			localStorage.setItem("FlappyRecord", count);
+			return count;
+		} 
+
+		if( count > +localStorage.getItem("FlappyRecord")){
+			localStorage.setItem("FlappyRecord", count);
+			return count;
+		}
+		else return +localStorage.getItem("FlappyRecord");
 	}
 });
 
