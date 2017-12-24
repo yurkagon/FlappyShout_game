@@ -67,6 +67,7 @@ $w: 700px;
 
 h1{
 	opacity: 0.8;
+	font-family: Lucida Console, Courier, monospace;
 }
 
 #score{
@@ -79,10 +80,10 @@ h1{
 .lose{
 	position: absolute;
 	top: 250px;
-	display: none;
 	text-align: center;
 	width: 100%;
 	margin: auto;
+	display: none;
 }
 
 

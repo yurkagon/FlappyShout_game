@@ -120,8 +120,10 @@ $(window).ready(()=>{
 		    
 		    if(player.checkCollision('.bottom, .top')){
 		    	isAlive = false;
-		    	$('.lose').show('fast').html("You have reached " + scores + " scores.<br/>"
-		    		+ "Your record is " + scoreRecord(scores) + " scores.");
+		    	$('.lose').html("You have reached " + scores + " scores.<br/>"
+		    		+ "Your record is " + scoreRecord(scores) + " scores.<br/><br/>"
+		    		+"Press R to restart!")
+		    	.show('fast');
 		    }
 		}
 

@@ -54,7 +54,8 @@ html, body {
     border-top-right-radius: 10px; }
 
 h1 {
-  opacity: 0.8; }
+  opacity: 0.8;
+  font-family: Lucida Console, Courier, monospace; }
 
 #score {
   position: absolute;
@@ -64,9 +65,9 @@ h1 {
 .lose {
   position: absolute;
   top: 250px;
-  display: none;
   text-align: center;
   width: 100%;
-  margin: auto; }
+  margin: auto;
+  display: none; }
 
 /*# sourceMappingURL=style.css.map */
