@@ -1,0 +1,75 @@
+html, body{overflow: hidden;}
+*{margin: 0; padding: 0;}
+$h: 600px;
+$w: 700px;
+
+.container{
+	margin: 20px auto;
+	height: $h;
+	width: $w;
+	background: url(img/clouds.jpg) 50% 50%;
+	background-size: 200%;
+	overflow: hidden;
+	position: relative;
+	.level{
+		position: relative;
+		height: $h;
+		
+	}
+	.green{
+		position: absolute;
+		height: 200px;
+		width: $w; 
+		bottom: 0;
+		background: url(img/green.png);
+		background-position: 0 400px;
+	}
+}
+
+
+
+#player{
+	position: absolute;
+	width: 30px;
+	height: 30px;
+	top: 250px;
+	left: 250px;
+	background: url(img/bird.png);
+	transition: top linear 0.2s;
+	background-size: cover;
+}
+
+.tube{
+	position: absolute;
+	top: 0;
+	width: 70px;
+	height: 900px;
+	
+	.top, .bottom{
+		position: absolute;
+		//top: 0;
+		width: 100%;
+		height: 300px;
+		background: linear-gradient(-90deg,green, yellow, green);
+		
+	}
+	.top{
+		top: 0;
+		border-bottom-left-radius: 10px;
+    	border-bottom-right-radius: 10px;
+	}
+	.bottom{
+		bottom: 0;
+		border-top-left-radius: 10px;
+    	border-top-right-radius: 10px;
+	}
+}
+
+
+h1{
+	position: absolute;
+	z-index:3;
+	margin-left: 10px;
+}
+
+
