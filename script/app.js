@@ -125,21 +125,34 @@ $(window).ready(()=>{
 
 	//tube spawner
 	setInterval(()=>{
-		var rand = -1 * Math.random()*300;
-		var tube = $('<div/>').addClass('tube').css({
-        	'top': rand + 'px',
-        	'left': (-parseInt(level.css('left')) + 750) + 'px'
-    	}).html(
-    		`<div class="top"></div>
-    		 <div class="bottom"></div>`
-    	)
-		level.append(tube);
-		setTimeout(()=>{
-			tube.remove();
-		}, (10000/SPEED)*2 );
+		if(isAlive){
+			var rand = -1 * Math.random()*300;
+			var tube = $('<div/>').addClass('tube').css({
+	        	'top': rand + 'px',
+	        	'left': (-parseInt(level.css('left')) + 750) + 'px'
+	    	}).html(
+	    		`<div class="top"></div>
+	    		 <div class="bottom"></div>`
+	    	)
+			level.append(tube);
+			setTimeout(()=>{
+				if(isAlive) tube.remove();
+			}, (10000/SPEED)*2 );
+		}
 	}, 10000/SPEED);
 
 
+	//restarting game
+	$('body').keydown(function(e){
+		if(e.keyCode == 82) RestartGame();
+	});
+
+	function RestartGame(){
+		isAlive = true;
+		$('.tube').remove();
+		player.setPosition(100, 250);
+		level.css('left', 0);
+	}
 });
 
 function limiter(value,min,max){
